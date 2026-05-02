@@ -22,6 +22,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="supabase-config.js"></script>
 </head>
 <body>
@@ -173,6 +174,7 @@
                 <button class="filter-btn" data-filter="screen-printing">Screen Printing</button>
                 <button class="filter-btn" data-filter="embroidery">Embroidery</button>
                 <button class="filter-btn" data-filter="uv-printing">UV Printing</button>
+                <button class="filter-btn" data-filter="pad-printing">Pad Printing</button>
                 <button class="filter-btn" data-filter="laser-engraving">Laser Engraving</button>
                 <button class="filter-btn" data-filter="dtf">DTF Printing</button>
                 <button class="filter-btn" data-filter="vinyl-stickers">Vinyl & Stickers</button>
@@ -182,7 +184,12 @@
         </div>
     </section>
 
-    <div class="lightbox" id="lightbox"><span class="lightbox-close">&times;</span><div class="lightbox-content"><img src="" alt="" id="lightbox-img"><div class="lightbox-caption"><h3 id="lightbox-title"></h3><p id="lightbox-category"></p></div></div></div>
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+        </div>
+    </div>
 
     <section id="testimonials" class="testimonials-section">
         <div class="section-container">
@@ -208,12 +215,42 @@
     <section id="quote" class="quote-section">
         <div class="section-container">
             <div class="quote-wrapper" data-aos="fade-up">
-                <div class="quote-info"><span class="section-tag">Get Started</span><h2>Request a <span class="gradient-text">Quote</span></h2><p>Have a project in mind? Fill out the form and our team will provide you with a detailed quotation within 24 hours.</p><div class="quote-contact-methods"><a href="https://wa.me/27624821827" class="contact-method whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span>Chat on WhatsApp</span></a><a href="mailto:info@interkombo.co.za" class="contact-method email"><i class="far fa-envelope"></i><span>Send Email</span></a></div></div>
+                <div class="quote-info">
+                    <span class="section-tag">Get Started</span>
+                    <h2>Request a <span class="gradient-text">Quote</span></h2>
+                    <p>Have a project in mind? Fill out the form and our team will provide you with a detailed quotation within 24 hours.</p>
+                    <div class="quote-contact-methods">
+                        <a href="https://wa.me/27624821827" class="contact-method whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span>Chat on WhatsApp</span></a>
+                        <a href="mailto:info@interkombo.co.za" class="contact-method email"><i class="far fa-envelope"></i><span>Send Email</span></a>
+                    </div>
+                </div>
                 <form class="quote-form" id="quote-form">
-                    <div class="form-row"><div class="form-group"><input type="text" placeholder="Full Name *" required></div><div class="form-group"><input type="email" placeholder="Email Address *" required></div></div>
-                    <div class="form-row"><div class="form-group"><input type="tel" placeholder="Phone Number"></div><div class="form-group"><input type="text" placeholder="Company Name"></div></div>
-                    <div class="form-group"><select required><option value="">Select Service *</option><option>Screen Printing</option><option>Embroidery</option><option>UV Printing</option><option>Pad Printing</option><option>Large Format Printing</option><option>Signage & Banners</option><option>Vinyl & Dome Stickers</option><option>Laser Engraving</option><option>Heat Press</option><option>Sublimation</option><option>DTF Printing</option><option>Other</option></select></div>
-                    <div class="form-group"><textarea rows="4" placeholder="Project Details *" required></textarea></div>
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" name="fullname" placeholder="Full Name *" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Email Address *" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><input type="tel" name="phone" placeholder="Phone Number"></div>
+                        <div class="form-group"><input type="text" name="company" placeholder="Company Name"></div>
+                    </div>
+                    <div class="form-group">
+                        <select name="service" required>
+                            <option value="">Select Service *</option>
+                            <option value="Screen Printing">Screen Printing</option>
+                            <option value="Embroidery">Embroidery</option>
+                            <option value="UV Printing">UV Printing</option>
+                            <option value="Pad Printing">Pad Printing</option>
+                            <option value="Large Format Printing">Large Format Printing</option>
+                            <option value="Signage & Banners">Signage & Banners</option>
+                            <option value="Vinyl & Dome Stickers">Vinyl & Dome Stickers</option>
+                            <option value="Laser Engraving">Laser Engraving</option>
+                            <option value="Heat Press">Heat Press</option>
+                            <option value="Sublimation">Sublimation</option>
+                            <option value="DTF Printing">DTF Printing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><textarea name="details" rows="4" placeholder="Project Details *" required></textarea></div>
                     <button type="submit" class="btn-primary btn-full"><i class="fas fa-paper-plane"></i> Submit Request</button>
                 </form>
             </div>
