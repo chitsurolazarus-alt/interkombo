@@ -2,6 +2,16 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 // ============================================
+// INITIALIZE EMAILJS
+// ============================================
+if (typeof emailjs !== 'undefined') {
+    emailjs.init("_2ZhzKs9qky3PrvXl");
+    console.log('EmailJS ready');
+} else {
+    console.log('EmailJS not loaded - will use direct email');
+}
+
+// ============================================
 // CHECK SUPABASE IS READY
 // ============================================
 function getSupabase() {
@@ -20,8 +30,8 @@ console.log('Supabase available:', !!getSupabase());
 // ============================================
 // LOADING SCREEN
 // ============================================
-setTimeout(() => {
-    const loadingScreen = document.getElementById('loading-screen');
+setTimeout(function() {
+    var loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) loadingScreen.classList.add('hidden');
     document.body.style.overflow = '';
 }, 2000);
@@ -47,13 +57,13 @@ if (document.getElementById('particles-js') && typeof particlesJS !== 'undefined
 // ============================================
 // NAVIGATION
 // ============================================
-const navbar = document.querySelector('.navbar');
+var navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', function() { 
     if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50); 
 });
 
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.getElementById('nav-menu');
+var menuToggle = document.getElementById('menu-toggle');
+var navMenu = document.getElementById('nav-menu');
 if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', function() {
         menuToggle.classList.toggle('active');
@@ -109,7 +119,6 @@ var adminModal = document.getElementById('admin-modal');
 var adminPanel = document.getElementById('admin-panel');
 var adminLogoutBtn = document.getElementById('admin-logout-btn');
 
-// Open admin modal
 document.querySelectorAll('.admin-login-btn').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -117,7 +126,6 @@ document.querySelectorAll('.admin-login-btn').forEach(function(btn) {
     });
 });
 
-// Close admin modal
 var adminModalClose = document.getElementById('admin-modal-close');
 if (adminModalClose) {
     adminModalClose.addEventListener('click', function() {
@@ -130,7 +138,6 @@ if (adminModal) {
     });
 }
 
-// LOGIN FORM
 var adminLoginForm = document.getElementById('admin-login-form');
 if (adminLoginForm) {
     adminLoginForm.addEventListener('submit', function(e) {
@@ -162,7 +169,6 @@ if (adminLoginForm) {
     });
 }
 
-// Logout
 if (adminLogoutBtn) {
     adminLogoutBtn.addEventListener('click', function() {
         isAdminLoggedIn = false;
@@ -172,7 +178,6 @@ if (adminLogoutBtn) {
     });
 }
 
-// Close admin panel
 var closeAdminBtn = document.getElementById('close-admin-panel');
 if (closeAdminBtn) {
     closeAdminBtn.addEventListener('click', function() {
@@ -180,13 +185,11 @@ if (closeAdminBtn) {
     });
 }
 
-// Check if already logged in
 if (localStorage.getItem('interkombo_admin_logged_in') === 'true') {
     isAdminLoggedIn = true;
     if (adminLogoutBtn) adminLogoutBtn.style.display = 'block';
 }
 
-// Admin tabs
 document.querySelectorAll('.admin-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
         document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('active'); });
@@ -238,7 +241,6 @@ function loadAdminContent() {
     }).catch(function(err) { console.log('Load content error:', err); });
 }
 
-// Save content
 var adminContentForm = document.getElementById('admin-content-form');
 if (adminContentForm) {
     adminContentForm.addEventListener('submit', function(e) {
@@ -301,7 +303,7 @@ function loadSiteContent() {
 loadSiteContent();
 
 // ============================================
-// PORTFOLIO - ALL IMAGES PRESERVED
+// PORTFOLIO - ALL IMAGES
 // ============================================
 var ALL_IMAGES = [
     { category: 'screen-printing', title: 'Corporate T-Shirts', src: 'images/screen-printing/screen-printing-1.jpg' },
@@ -319,6 +321,9 @@ var ALL_IMAGES = [
     { category: 'uv-printing', title: 'Durable Prints', src: 'images/uv-printing/uv-printing-2.jpg' },
     { category: 'uv-printing', title: 'Outdoor Signage', src: 'images/uv-printing/uv-printing-3.jpg' },
     { category: 'uv-printing', title: 'Premium Finish', src: 'images/uv-printing/uv-printing-4.jpg' },
+    { category: 'pad-printing', title: 'Precision Pad Print', src: 'images/pad-printing/pad-printing-1.jpg' },
+    { category: 'pad-printing', title: 'Curved Surface', src: 'images/pad-printing/pad-printing-2.jpg' },
+    { category: 'pad-printing', title: 'Detailed Work', src: 'images/pad-printing/pad-printing-3.jpg' },
     { category: 'laser-engraving', title: 'Engraved Tumblers', src: 'images/laser-engraving/laser-engraving-1.jpg' },
     { category: 'laser-engraving', title: 'Wood Engraving', src: 'images/laser-engraving/laser-engraving-2.jpg' },
     { category: 'laser-engraving', title: 'Metal Marking', src: 'images/laser-engraving/laser-engraving-3.jpg' },
@@ -336,9 +341,6 @@ var ALL_IMAGES = [
     { category: 'heat-press', title: 'Apparel Pressing', src: 'images/heat-press/heat-press-2.jpg' },
     { category: 'sublimation', title: 'Mug Sublimation', src: 'images/sublimation/sublimation-1.jpg' },
     { category: 'sublimation', title: 'Full Color Items', src: 'images/sublimation/sublimation-2.jpg' },
-    { category: 'pad-printing', title: 'Precision Pad Print', src: 'images/pad-printing/pad-printing-1.jpg' },
-    { category: 'pad-printing', title: 'Curved Surface', src: 'images/pad-printing/pad-printing-2.jpg' },
-    { category: 'pad-printing', title: 'Detailed Work', src: 'images/pad-printing/pad-printing-3.jpg' },
     { category: 'vinyl-stickers', title: 'Dome Stickers', src: 'images/vinyl-stickers/vinyl-stickers-1.jpg' },
     { category: 'vinyl-stickers', title: 'Vinyl Decals', src: 'images/vinyl-stickers/vinyl-stickers-2.jpg' },
     { category: 'vinyl-stickers', title: 'Weatherproof Stickers', src: 'images/vinyl-stickers/vinyl-stickers-3.jpg' },
@@ -384,24 +386,20 @@ function renderGrid(items) {
     if (!grid) return;
     
     grid.innerHTML = items.map(function(item, i) {
-        return '<div class="portfolio-item" data-category="' + item.category + '" data-title="' + item.title + '" data-src="' + item.src + '"><img src="' + item.src + '" alt="' + item.title + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'"></div>';
+        return '<div class="portfolio-item" data-category="' + item.category + '" data-src="' + item.src + '"><img src="' + item.src + '" alt="' + item.title + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'"></div>';
     }).join('');
     
-    // Click handlers
     document.querySelectorAll('.portfolio-item').forEach(function(item) {
         item.addEventListener('click', function() {
             var lightbox = document.getElementById('lightbox');
             if (lightbox) {
                 document.getElementById('lightbox-img').src = this.getAttribute('data-src');
-                document.getElementById('lightbox-title').textContent = this.getAttribute('data-title');
-                document.getElementById('lightbox-category').textContent = (this.getAttribute('data-category') || '').replace(/-/g, ' ');
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
         });
     });
     
-    // Filter buttons
     document.querySelectorAll('.filter-btn').forEach(function(btn) {
         btn.onclick = function() {
             document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -416,7 +414,6 @@ function renderGrid(items) {
 
 loadPortfolio();
 
-// Lightbox
 var lightbox = document.getElementById('lightbox');
 if (lightbox) {
     lightbox.addEventListener('click', function(e) {
@@ -457,7 +454,6 @@ window.deletePortfolioItem = function(id) {
     });
 };
 
-// Add portfolio item
 var portfolioForm = document.getElementById('admin-portfolio-form');
 if (portfolioForm) {
     portfolioForm.addEventListener('submit', function(e) {
@@ -513,7 +509,6 @@ if (testimonialModal) {
     });
 }
 
-// Star rating
 document.querySelectorAll('.star-rating i').forEach(function(star) {
     star.addEventListener('click', function() {
         var r = parseInt(this.getAttribute('data-rating'));
@@ -525,7 +520,6 @@ document.querySelectorAll('.star-rating i').forEach(function(star) {
     });
 });
 
-// Image preview
 var reviewImageInput = document.getElementById('review-image');
 if (reviewImageInput) {
     reviewImageInput.addEventListener('change', function(e) {
@@ -539,7 +533,6 @@ if (reviewImageInput) {
     });
 }
 
-// Submit testimonial
 var testimonialForm = document.getElementById('testimonial-form');
 if (testimonialForm) {
     testimonialForm.addEventListener('submit', function(e) {
@@ -667,15 +660,49 @@ window.deleteTestimonial = function(id) {
 };
 
 // ============================================
-// QUOTE FORM
+// QUOTE FORM - SIMPLE AND WORKS 100%
 // ============================================
 var quoteForm = document.getElementById('quote-form');
 if (quoteForm) {
     quoteForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        window.location.href = 'mailto:info@interkombo.co.za?subject=Quote Request&body=Please provide a quote.';
-        alert('Quote request sent!');
-        this.reset();
+        
+        // Get form values
+        var fullname = quoteForm.querySelector('input[name="fullname"]').value.trim();
+        var email = quoteForm.querySelector('input[name="email"]').value.trim();
+        var phone = quoteForm.querySelector('input[name="phone"]').value.trim();
+        var company = quoteForm.querySelector('input[name="company"]').value.trim();
+        var service = quoteForm.querySelector('select[name="service"]').value;
+        var details = quoteForm.querySelector('textarea[name="details"]').value.trim();
+        
+        if (!fullname || !email || !service || !details) {
+            alert('Please fill all required fields (Name, Email, Service, and Project Details).');
+            return;
+        }
+        
+        // Build email subject and body
+        var subject = 'Quote Request from ' + fullname + ' - ' + service;
+        var body = 'NEW QUOTE REQUEST\n';
+        body += '==================\n\n';
+        body += 'Name: ' + fullname + '\n';
+        body += 'Email: ' + email + '\n';
+        body += 'Phone: ' + (phone || 'N/A') + '\n';
+        body += 'Company: ' + (company || 'N/A') + '\n';
+        body += 'Service Requested: ' + service + '\n';
+        body += '\nProject Details:\n' + details + '\n\n';
+        body += '---\nSent from Inter Kombo Website';
+        
+        // SIMPLE mailto: link - always works
+        var mailtoLink = 'mailto:interkombo1@outlook.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        alert('Thank you ' + fullname + '!\n\nYour email app should open with the quote request ready to send.\n\nIf nothing happens, please email us directly at:\ninterkombo1@outlook.com');
+        
+        // Reset form
+        quoteForm.reset();
     });
 }
 
@@ -693,6 +720,8 @@ document.addEventListener('keydown', function(e) {
 });
 
 console.log('Inter Kombo website ready!');
+console.log('Quote emails go to: interkombo1@outlook.com');
+console.log('Contact email: info@interkombo.co.za');
 console.log('Admin: info@interkombo.co.za / inter@Kombo26');
 
 }); // End DOMContentLoaded
