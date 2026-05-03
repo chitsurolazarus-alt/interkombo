@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inter Kombo | Premium Printing & Branding Solutions South Africa</title>
+    <meta name="description" content="Inter Kombo is South Africa's premier printing and branding company. Screen printing, embroidery, UV printing, laser engraving, DTF printing, signage, and corporate branding.">
+    <meta name="keywords" content="printing South Africa, screen printing, embroidery, UV printing, laser engraving, DTF printing, signage, banners, corporate branding, Inter Kombo">
+    <link rel="canonical" href="https://interkombo.co.za/">
+    <meta property="og:title" content="Inter Kombo | Premium Printing & Branding Solutions">
+    <meta property="og:description" content="South Africa's premier printing and branding company.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/logo/inter-kombo-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"LocalBusiness","name":"Inter Kombo","description":"Premium printing and branding solutions","telephone":"+27 62 482 1827","email":"info@interkombo.co.za","address":{"@type":"PostalAddress","streetAddress":"39B Nuwe Hoop Street","addressLocality":"Alphen Park","addressCountry":"ZA"},"openingHours":["Mo-Fr 08:00-17:00","Sa 09:00-13:00"],"url":"https://interkombo.co.za"}
+    </script>
+    <link rel="icon" type="image/png" href="images/logo/inter-kombo-logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="supabase-config.js"></script>
+</head>
+<body>
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo-container"><img src="images/logo/inter-kombo-logo.png" alt="Inter Kombo" class="loading-logo"><div class="loading-ring"></div></div>
+            <div class="loading-text"><span class="loading-brand">INTER KOMBO</span><div class="loading-bar-container"><div class="loading-bar"></div></div></div>
+        </div>
+    </div>
+
+    <div id="particles-js"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo-link"><img src="images/logo/inter-kombo-logo.png" alt="Inter Kombo" class="logo-img"></a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#" class="nav-link admin-login-btn"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+            <div class="nav-right"><a href="#quote" class="btn-primary btn-nav pulse-animation">Get Quote</a><div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div></div>
+        </div>
+    </nav>
+
+    <div class="modal" id="admin-modal">
+        <div class="modal-content admin-modal-content">
+            <span class="modal-close" id="admin-modal-close">&times;</span>
+            <div class="admin-modal-header"><img src="images/logo/inter-kombo-logo.png" alt="Logo" class="admin-modal-logo"><h2>Admin Login</h2></div>
+            <form id="admin-login-form">
+                <div class="form-group"><input type="email" id="admin-email" placeholder="Email" required></div>
+                <div class="form-group"><input type="password" id="admin-password" placeholder="Password" required></div>
+                <button type="submit" class="btn-primary btn-full">Login</button>
+            </form>
+            <p id="admin-login-error" style="color:#EF4444;text-align:center;margin-top:10px;display:none"></p>
+            <button class="btn-outline btn-full" id="admin-logout-btn" style="display:none;margin-top:10px">Logout</button>
+        </div>
+    </div>
+
+    <div class="admin-panel" id="admin-panel" style="display:none">
+        <div class="admin-panel-header">
+            <h3><i class="fas fa-tools"></i> Admin Panel</h3>
+            <div class="admin-panel-tabs">
+                <button class="admin-tab active" data-admin-tab="content">Edit Text</button>
+                <button class="admin-tab" data-admin-tab="portfolio">Manage Portfolio</button>
+                <button class="admin-tab" data-admin-tab="testimonials-admin">Reviews</button>
+            </div>
+            <button class="btn-primary btn-sm" id="close-admin-panel">Close</button>
+        </div>
+        <div class="admin-panel-body">
+            <div class="admin-tab-content active" id="admin-content">
+                <h4>Edit Website Text</h4>
+                <form id="admin-content-form">
+                    <div class="form-group"><label>Hero Title</label><input type="text" id="edit-hero-title"></div>
+                    <div class="form-group"><label>Hero Description</label><textarea id="edit-hero-description" rows="2"></textarea></div>
+                    <div class="form-group"><label>Who We Are</label><textarea id="edit-about-who" rows="3"></textarea></div>
+                    <div class="form-group"><label>Vision</label><textarea id="edit-about-vision" rows="3"></textarea></div>
+                    <div class="form-group"><label>Mission</label><textarea id="edit-about-mission" rows="3"></textarea></div>
+                    <div class="form-group"><label>Phone</label><input type="text" id="edit-phone"></div>
+                    <div class="form-group"><label>Email</label><input type="email" id="edit-email"></div>
+                    <div class="form-group"><label>Address</label><input type="text" id="edit-address"></div>
+                    <button type="submit" class="btn-primary">Save All Changes</button>
+                </form>
+            </div>
+            <div class="admin-tab-content" id="admin-portfolio">
+                <h4>Add New Portfolio Item</h4>
+                <form id="admin-portfolio-form" style="margin-bottom:20px">
+                    <div class="form-row-admin">
+                        <div class="form-group"><label>Title</label><input type="text" id="portfolio-title" required></div>
+                        <div class="form-group"><label>Category</label><select id="portfolio-category" required><option value="">Select...</option><option value="screen-printing">Screen Printing</option><option value="embroidery">Embroidery</option><option value="uv-printing">UV Printing</option><option value="pad-printing">Pad Printing</option><option value="laser-engraving">Laser Engraving</option><option value="dtf">DTF Printing</option><option value="heat-press">Heat Press</option><option value="sublimation">Sublimation</option><option value="vinyl-stickers">Vinyl & Stickers</option><option value="signage">Signage & Banners</option></select></div>
+                    </div>
+                    <div class="form-group"><label>Image</label><input type="file" id="portfolio-image" accept="image/*" required></div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-plus"></i> Add to Portfolio</button>
+                </form>
+                <h4>Existing Portfolio Items</h4>
+                <div id="admin-portfolio-list"><p style="color:var(--text-light);text-align:center;padding:20px;">Loading...</p></div>
+            </div>
+            <div class="admin-tab-content" id="admin-testimonials-admin">
+                <h4>Manage Reviews</h4>
+                <div id="admin-testimonials-list"><p style="color:var(--text-light);text-align:center;padding:20px;">Loading...</p></div>
+            </div>
+        </div>
+    </div>
+
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text-container">
+                <h1 class="hero-title" id="hero-title-display"><span class="title-line animate-slide-left">Transform Your Brand</span><span class="title-line animate-slide-right">With <span class="gradient-text">INTER KOMBO</span></span></h1>
+                <p class="hero-description animate-fade-up" id="hero-description-display">Elevate your corporate identity with cutting-edge printing technology and unparalleled craftsmanship. Where innovation meets precision for extraordinary branding solutions.</p>
+                <div class="hero-buttons animate-fade-up"><a href="#portfolio" class="btn-primary btn-large">Explore Our Work <i class="fas fa-arrow-right"></i></a><a href="#contact" class="btn-outline btn-large">Contact Us <i class="fas fa-phone"></i></a></div>
+                <div class="hero-stats animate-fade-up"><div class="stat-item"><span class="stat-number" data-count="500">0</span><span class="stat-label">Happy Clients</span></div><div class="stat-item"><span class="stat-number" data-count="10000">0</span><span class="stat-label">Projects Done</span></div><div class="stat-item"><span class="stat-number" data-count="15">0</span><span class="stat-label">Years Experience</span></div></div>
+            </div>
+            <div class="hero-visual animate-float"><div class="hero-circle primary"></div><div class="hero-circle secondary"></div><div class="hero-circle tertiary"></div><div class="hero-printing-preview"><div class="preview-card"><i class="fas fa-print"></i><span>DTF Printing</span></div><div class="preview-card"><i class="fas fa-tshirt"></i><span>Embroidery</span></div><div class="preview-card"><i class="fas fa-vector-square"></i><span>Laser Engraving</span></div></div></div>
+        </div>
+        <div class="scroll-indicator"><div class="mouse"><div class="wheel"></div></div><span>Scroll to explore</span></div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">About Us</span><h2 class="section-title">Crafting <span class="gradient-text">Excellence</span> in Every Print</h2></div>
+            <div class="about-grid">
+                <div class="about-card" data-aos="fade-right"><div class="card-icon-wrapper"><div class="card-icon"><i class="fas fa-building"></i></div></div><h3>Who We Are</h3><p id="display-about-who">Inter Kombo stands as a premier printing and branding establishment, meticulously engineered to elevate corporate identities through sophisticated visual communications.</p></div>
+                <div class="about-card highlight-card" data-aos="fade-up"><div class="card-icon-wrapper"><div class="card-icon"><i class="fas fa-eye"></i></div></div><h3>Our Vision</h3><p id="display-about-vision">To establish ourselves as the preeminent regional branding and promotional enterprise, distinguished by pioneering innovation and uncompromising production excellence.</p></div>
+                <div class="about-card" data-aos="fade-left"><div class="card-icon-wrapper"><div class="card-icon"><i class="fas fa-bullseye"></i></div></div><h3>Our Mission</h3><p id="display-about-mission">To provide seamlessly integrated, cost-effective, and superior quality branding solutions that enable organizations to articulate their identity with clarity.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Our Capabilities</span><h2 class="section-title">Comprehensive <span class="gradient-text">In-House</span> Solutions</h2></div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up"><div class="service-image"><img src="images/screen-printing/screen-printing-1.jpg" alt="Screen Printing"></div><div class="service-content"><h3>Screen Printing</h3><p>Premium quality screen printing for bulk orders with vibrant, long-lasting results</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-image"><img src="images/embroidery/embroidery-1.jpg" alt="Embroidery"></div><div class="service-content"><h3>Embroidery</h3><p>Professional embroidery on apparel and accessories with intricate detail and precision</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150"><div class="service-image"><img src="images/uv-printing/uv-printing-1.jpg" alt="UV Printing"></div><div class="service-content"><h3>UV Printing</h3><p>UV-resistant printing technology for exceptional durability and stunning color reproduction</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-image"><img src="images/pad-printing/pad-printing-1.jpg" alt="Pad Printing"></div><div class="service-content"><h3>Pad Printing</h3><p>Precision pad printing on irregular surfaces with exceptional accuracy and consistency</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="250"><div class="service-image"><img src="images/signage/signage-1.jpg" alt="Large Format"></div><div class="service-content"><h3>Large Format Printing</h3><p>Large scale printing for impactful banners, displays, and promotional materials</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300"><div class="service-image"><img src="images/vinyl-stickers/vinyl-stickers-1.jpg" alt="Vinyl Stickers"></div><div class="service-content"><h3>Vinyl & Dome Stickers</h3><p>Durable vinyl and dome stickers with weatherproof properties for lasting impressions</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="350"><div class="service-image"><img src="images/laser-engraving/laser-engraving-1.jpg" alt="Laser Engraving"></div><div class="service-content"><h3>Laser Engraving</h3><p>Precision laser engraving services for permanent, elegant markings on various materials</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400"><div class="service-image"><img src="images/heat-press/heat-press-1.jpg" alt="Heat Press"></div><div class="service-content"><h3>Heat Press</h3><p>Professional heat press applications for flawless transfers on various substrates</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="450"><div class="service-image"><img src="images/sublimation/sublimation-1.jpg" alt="Sublimation"></div><div class="service-content"><h3>Sublimation</h3><p>High-quality sublimation printing for vibrant, permanent color integration into materials</p></div></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500"><div class="service-image"><img src="images/dtf/dtf-1.jpg" alt="DTF Printing"></div><div class="service-content"><h3>DTF Printing</h3><p>Direct-to-film printing technology for versatile, high-quality transfers on any fabric</p></div></div>
+            </div>
+            <div class="services-more" data-aos="fade-up"><p>And more: <strong>Signage & Banners, Corporate Gifts, Vehicle Branding, Promotional Products</strong></p></div>
+        </div>
+    </section>
+
+    <section class="advantages-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Why Choose Us</span><h2 class="section-title">The <span class="gradient-text">Vertically Integrated</span> Advantage</h2></div>
+            <div class="advantages-grid">
+                <div class="advantage-card" data-aos="zoom-in"><div class="advantage-number">01</div><div class="advantage-icon"><i class="fas fa-check-double"></i></div><h3>Consistent Quality Control</h3><p>End-to-end oversight ensures that every product meets our rigorous premium standards.</p></div>
+                <div class="advantage-card" data-aos="zoom-in" data-aos-delay="100"><div class="advantage-number">02</div><div class="advantage-icon"><i class="fas fa-cogs"></i></div><h3>Operational Efficiency</h3><p>Seamless coordination between departments streamlines production workflows.</p></div>
+                <div class="advantage-card" data-aos="zoom-in" data-aos-delay="200"><div class="advantage-number">03</div><div class="advantage-icon"><i class="fas fa-coins"></i></div><h3>Cost-Effectiveness</h3><p>In-house capabilities reduce reliance on third-party vendors, passing savings to clients.</p></div>
+                <div class="advantage-card" data-aos="zoom-in" data-aos-delay="300"><div class="advantage-number">04</div><div class="advantage-icon"><i class="fas fa-clock"></i></div><h3>Timely Execution</h3><p>Optimized processes guarantee that your projects are delivered precisely on schedule.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Portfolio</span><h2 class="section-title">Our <span class="gradient-text">Latest</span> Work</h2></div>
+            <div class="portfolio-filter" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="screen-printing">Screen Printing</button>
+                <button class="filter-btn" data-filter="embroidery">Embroidery</button>
+                <button class="filter-btn" data-filter="uv-printing">UV Printing</button>
+                <button class="filter-btn" data-filter="pad-printing">Pad Printing</button>
+                <button class="filter-btn" data-filter="laser-engraving">Laser Engraving</button>
+                <button class="filter-btn" data-filter="dtf">DTF Printing</button>
+                <button class="filter-btn" data-filter="vinyl-stickers">Vinyl & Stickers</button>
+                <button class="filter-btn" data-filter="signage">Signage & Banners</button>
+            </div>
+            <div class="portfolio-grid" id="portfolio-grid"></div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+        </div>
+    </div>
+
+    <section id="testimonials" class="testimonials-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Testimonials</span><h2 class="section-title">What Our <span class="gradient-text">Clients</span> Say</h2></div>
+            <div class="testimonials-grid" id="testimonials-container"></div>
+            <div class="add-testimonial" data-aos="fade-up"><h3>Share Your Experience</h3><p>Leave a review and share a photo of your product. No account needed!</p><button class="btn-primary" id="open-testimonial-form"><i class="fas fa-star"></i> Write a Review</button></div>
+        </div>
+    </section>
+
+    <div class="modal" id="testimonial-modal">
+        <div class="modal-content"><span class="modal-close">&times;</span><h2>Submit Your Review</h2>
+            <form id="testimonial-form">
+                <div class="form-group"><input type="text" id="review-name" placeholder="Your Name *" required></div>
+                <div class="form-group"><input type="text" id="review-company" placeholder="Company (Optional)"></div>
+                <div class="form-group"><label>Rating *</label><div class="star-rating"><i class="far fa-star" data-rating="1"></i><i class="far fa-star" data-rating="2"></i><i class="far fa-star" data-rating="3"></i><i class="far fa-star" data-rating="4"></i><i class="far fa-star" data-rating="5"></i></div><input type="hidden" id="review-rating" required></div>
+                <div class="form-group"><textarea id="review-text" rows="4" placeholder="Your Review *" required></textarea></div>
+                <div class="form-group"><input type="file" id="review-image" accept="image/*"><div class="image-preview" id="image-preview"></div></div>
+                <button type="submit" class="btn-primary btn-full">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="quote" class="quote-section">
+        <div class="section-container">
+            <div class="quote-wrapper" data-aos="fade-up">
+                <div class="quote-info">
+                    <span class="section-tag">Get Started</span>
+                    <h2>Request a <span class="gradient-text">Quote</span></h2>
+                    <p>Have a project in mind? Fill out the form and our team will provide you with a detailed quotation within 24 hours.</p>
+                    <div class="quote-contact-methods">
+                        <a href="https://wa.me/27624821827" class="contact-method whatsapp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span>Chat on WhatsApp</span></a>
+                        <a href="mailto:info@interkombo.co.za" class="contact-method email"><i class="far fa-envelope"></i><span>Send Email</span></a>
+                    </div>
+                </div>
+                <form class="quote-form" id="quote-form">
+                    <div class="form-row">
+                        <div class="form-group"><input type="text" name="fullname" placeholder="Full Name *" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Email Address *" required></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><input type="tel" name="phone" placeholder="Phone Number"></div>
+                        <div class="form-group"><input type="text" name="company" placeholder="Company Name"></div>
+                    </div>
+                    <div class="form-group">
+                        <select name="service" required>
+                            <option value="">Select Service *</option>
+                            <option value="Screen Printing">Screen Printing</option>
+                            <option value="Embroidery">Embroidery</option>
+                            <option value="UV Printing">UV Printing</option>
+                            <option value="Pad Printing">Pad Printing</option>
+                            <option value="Large Format Printing">Large Format Printing</option>
+                            <option value="Signage & Banners">Signage & Banners</option>
+                            <option value="Vinyl & Dome Stickers">Vinyl & Dome Stickers</option>
+                            <option value="Laser Engraving">Laser Engraving</option>
+                            <option value="Heat Press">Heat Press</option>
+                            <option value="Sublimation">Sublimation</option>
+                            <option value="DTF Printing">DTF Printing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><textarea name="details" rows="4" placeholder="Project Details *" required></textarea></div>
+                    <button type="submit" class="btn-primary btn-full"><i class="fas fa-paper-plane"></i> Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up"><span class="section-tag">Get in Touch</span><h2 class="section-title">Contact <span class="gradient-text">Us</span></h2></div>
+            <div class="contact-grid">
+                <div class="contact-card" data-aos="flip-left"><div class="contact-icon"><i class="fas fa-phone"></i></div><h3>Phone</h3><a href="tel:+27624821827" id="display-phone">+27 62 482 1827</a></div>
+                <div class="contact-card" data-aos="flip-left" data-aos-delay="100"><div class="contact-icon"><i class="far fa-envelope"></i></div><h3>Email</h3><a href="mailto:info@interkombo.co.za" id="display-email">info@interkombo.co.za</a></div>
+                <div class="contact-card" data-aos="flip-left" data-aos-delay="200"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Address</h3><p id="display-address">39B Nuwe Hoop Street, Alphen Park</p></div>
+                <div class="contact-card" data-aos="flip-left" data-aos-delay="300"><div class="contact-icon"><i class="far fa-clock"></i></div><h3>Business Hours</h3><p>Mon - Fri: 8:00 AM - 5:00 PM</p><p>Saturday: 9:00 AM - 1:00 PM</p><p>Sunday: Closed</p></div>
+            </div>
+            <div class="social-links" data-aos="fade-up">
+                <a href="https://www.facebook.com/share/1AzDuLiyR9/" target="_blank" rel="noopener" class="social-link facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/27624821827" target="_blank" rel="noopener" class="social-link whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:info@interkombo.co.za" class="social-link gmail" aria-label="Email"><i class="far fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about"><div class="footer-logo"><img src="images/logo/inter-kombo-logo.png" alt="Inter Kombo" width="45" height="45"><h3>INTER KOMBO</h3></div><p>Premium printing and branding solutions that elevate your corporate identity. Quality, precision, and excellence in every project.</p></div>
+                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Contact</a></li></ul></div>
+                <div class="footer-services"><h4>Our Services</h4><ul><li>Screen Printing</li><li>Embroidery</li><li>UV Printing</li><li>Laser Engraving</li><li>DTF Printing</li><li>Large Format Printing</li></ul></div>
+                <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +27 62 482 1827</p><p><i class="far fa-envelope"></i> info@interkombo.co.za</p><p><i class="fas fa-map-marker-alt"></i> 39B Nuwe Hoop Street, Alphen Park</p></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Inter Kombo. All rights reserved. | Premium Printing & Branding Solutions</p></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
